@@ -1,22 +1,23 @@
 package com.example.jpa.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
-    @Data
-    @Entity
-    public class Instructor {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String firstName;
-        private String lastName;
+import java.util.List;
 
+@Data
+@Entity
+public class Instructor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    private String firstName;
+    private String lastName;
 
-    }
+    @OneToMany(mappedBy = "advisor")
+    private List<Student> advisingStudents;
 
-
+    @OneToMany(mappedBy = "instructor")
+    private List<Lecture> lectures;
+}

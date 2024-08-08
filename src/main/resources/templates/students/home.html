@@ -7,13 +7,13 @@
 <body>
 <h1>Student List</h1>
 <!-- 저장된 학생이 없는 경우 -->
-<div th:if="${students.isEmpty()}">
+<div th:if="${studentList.isEmpty()}">
     <p>No Students Here...</p>
 </div>
 <!-- 저장된 학생이 있는 경우 -->
 <div
-        th:unless="${students.isEmpty()}"
-        th:each="student: ${students}"
+        th:unless="${studentList.isEmpty()}"
+        th:each="student: ${studentList}"
 >
     <p>ID: [[${student.id}]]</p>
     <p>이름: [[${student.name}]]</p>
@@ -21,6 +21,6 @@
     <a th:href="@{/students/{id} (id=${student.id})}">Details</a>
     <hr>
 </div>
-<a href="/students/create-view">Create</a>
+<a href="/students/create">Create</a>
 </body>
-</html>
+</html>>
